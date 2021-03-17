@@ -76,14 +76,27 @@ export async function viewAllMembers(req, res) {
     }
 }
 
-//Update member record
-export function updateMember(req, res) {
-    console.log(req.body);
-    res.send(req.body)
-}
-
-//Delete a member
-export function deleteMember(req, res) {
-    console.log(req.body);
-    res.send(req.body)
+//Delete a Member
+export async function deleteMember(req, res) {
+    try {
+        let member = await Member.findAll();
+        if (member) {
+            res.status(200).json({
+                success: true,
+                message: 'Member records was successfully deleted',
+                data: member
+            })
+        } else {
+            res.json({
+                success: true,
+                message: 'Member was not found.',
+            })
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            message: "Oopss! Something is wrong..."
+        })
+    }
 }
