@@ -1,20 +1,20 @@
-import Member from "../models/borrow.model.js";
+import Borrow from "../models/borrow.model.js";
 
 
-//Add a Record
-export async function addrecord(req, res) {
+// Create Record borrow/
+export async function addRecord(req, res) {
     try {
-        let record = await record.create(req.body);
+        let record = await Record.create(req.body);
         if (record) {
             res.status(200).json({
                 success: true,
-                message: 'record created successfully',
+                message: 'Record created successfully',
                 data: record
             })
         } else {
             res.status(200).json({
                 success: true,
-                message: 'recordr could not be created at this time'
+                message: 'Record could not be created at this time'
             })
         }
     } catch (err) {
@@ -26,45 +26,20 @@ export async function addrecord(req, res) {
     }
 }
 
-//View a record
-export async function viewrecord(req, res) {
+// View Record borrow
+export async function viewRecord(req, res) {
     try {
-        let allreords = await record.findAll({where: {record_id: req.params.id}});
-        if (allrecordss) {
-            res.json({
-                success: true,
-                message: 'record  retrieved successfully',
-                data: allrecords
-            })
-        } else {
-            res.json({
-                success: true,
-                message: 'No reocrd  found.',
-            })
-        }
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            success: false,
-            message: "Oopss! Something is wrong..."
-        })
-    }
-}
-
-//View all records
-export async function viewAllrecordss(req, res) {
-    try {
-        let allrecordss = await records.findAll();
+        let allrecords = await Borrow.findAll({where: {record_id: req.params.id}});
         if (allrecords) {
             res.json({
                 success: true,
-                message: 'records retrieved successfully',
+                message: 'Records retrieved successfully',
                 data: allrecords
             })
         } else {
             res.json({
                 success: true,
-                message: 'No record  found.',
+                message: 'No Record found.',
             })
         }
     } catch (err) {
@@ -76,27 +51,70 @@ export async function viewAllrecordss(req, res) {
     }
 }
 
-//Update a record
-export function updaterecord(req, res) {
-    console.log(req.body);
-    res.send(req.body)
-}
-
-//view memberborrowing
-//View  memberborrowing
-export async function viewmemberborrowing(req, res) {
+// View all records borrow
+export async function viewAllRecord(req, res) {
     try {
-        let allmembers = await Member.findAll({where: {borrower_name: req.params.borrowe_name}});
-        if (memberborrowings) {
+        let allrecords = await Member.findAll();
+        if (allrecords) {
             res.json({
                 success: true,
-                message: 'books records retrieved successfully',
-                data: memberborrowings
+                message: 'Record retrieved successfully',
+                data: allrecords
             })
         } else {
             res.json({
                 success: true,
-                message: 'No book records found.',
+                message: 'No Record records found.',
+            })
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            message: "Oopss! Something is wrong..."
+        })
+    }
+}
+
+// Update borrowing record borrow
+export async function updateRecord(req, res) {
+    try {
+        let record = await Record.update(req.body);
+        if (record) {
+            res.status(200).json({
+                success: true,
+                message: 'Record updated successfully',
+                data: book
+            })
+        } else {
+            res.json({
+                success: true,
+                message: 'Record not found.',
+            })
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            message: "Oopss! Something is wrong..."
+        })
+    }
+}
+
+// View Member Borrowings borrow
+export async function viewMemberRecord(req, res) {
+    try {
+        let member = await Borrow.findAll({where: {member_id: req.params.id}});
+        if (member) {
+            res.json({
+                success: true,
+                message: 'Member retrieved successfully',
+                data: member
+            })
+        } else {
+            res.json({
+                success: true,
+                message: 'No Member found.',
             })
         }
     } catch (err) {

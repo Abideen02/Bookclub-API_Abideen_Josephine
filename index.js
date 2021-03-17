@@ -7,7 +7,7 @@ const app = express();
 
 dotenv.config()
 
-const port = process.env.PORT || 3006;
+const port = process.env.PORT || 5002;
 
 app.get('/', (req, res) => {
     res.send('Hello World')

@@ -1,23 +1,23 @@
 import express from "express";
-import { createRecords, viewAllRecords, viewRecord, updateborrowingrecord, viewmemberborrowing } from '../controllers/borrowController.js'
+import { addRecord, viewRecord, viewAllRecord, updateRecord, viewMemberRecord } from '../controllers/borrowController.js'
 import { authenticate } from '../middlewares/auth.js';
 
 const borrowRouter = express.Router();
 
-//Add a record
-borrowRouter.post("/", authenticate, createRecords);
+// Create Record borrow/
+borrowRouter.post("/", authenticate, addRecord);
 
-//View a record records/:id
-borrowRouter.get("/:id", authenticate, viewRecord);
+// View Record borrow/:id
+borrowRouter.post("/", authenticate, viewRecord);
 
-//View all record records/
-borrowRouter.get("/", authenticate, viewAllRecords);
+// View all records borrow/
+borrowRouter.post("/", authenticate, viewAllRecord);
 
-//Update borrowing record/
-borrowRouter.put("/", authenticate, updateborrowingrecord);
+// Update borrowing record borrow/
+borrowRouter.post("/", authenticate, updateRecord);
 
-//view member borrowing/:id
-borrowRouter.get("/:id", authenticate, viewmemberborrowing);
+// View Member Borrowings borrow/bymember/:memberid
+borrowRouter.post("/", authenticate, viewMemberRecord);
+
 
 export default borrowRouter;
-
