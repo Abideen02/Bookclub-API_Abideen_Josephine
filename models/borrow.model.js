@@ -1,8 +1,8 @@
 import Sequelize from "sequelize";
 import { sequelize } from "../db/dbConnect.js";
 
-const Borrow = sequelize.define('member', {
-    record_id: {
+const Borrow = sequelize.define('borrow', {
+    borrow_id: {
         autoincrement: true,
         type: Sequelize.INTEGER,
         allowNull: true,

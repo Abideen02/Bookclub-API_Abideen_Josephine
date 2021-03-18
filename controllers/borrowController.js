@@ -4,7 +4,7 @@ import Borrow from "../models/borrow.model.js";
 // Create Record borrow/
 export async function addRecord(req, res) {
     try {
-        let record = await Record.create(req.body);
+        let record = await Borrow.create(req.body);
         if (record) {
             res.status(200).json({
                 success: true,
@@ -29,7 +29,7 @@ export async function addRecord(req, res) {
 // View Record borrow
 export async function viewRecord(req, res) {
     try {
-        let allrecords = await Borrow.findAll({where: {record_id: req.params.id}});
+        let allrecords = await Borrow.findAll({where: {borrow_id: req.params.id}});
         if (allrecords) {
             res.json({
                 success: true,
@@ -54,7 +54,7 @@ export async function viewRecord(req, res) {
 // View all records borrow
 export async function viewAllRecord(req, res) {
     try {
-        let allrecords = await Member.findAll();
+        let allrecords = await Borrow.findAll();
         if (allrecords) {
             res.json({
                 success: true,
@@ -79,7 +79,7 @@ export async function viewAllRecord(req, res) {
 // Update borrowing record borrow
 export async function updateRecord(req, res) {
     try {
-        let record = await Record.update(req.body);
+        let record = await Borrow.update(req.body);
         if (record) {
             res.status(200).json({
                 success: true,

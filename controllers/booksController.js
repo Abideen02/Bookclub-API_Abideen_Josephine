@@ -8,7 +8,7 @@ export async function addBook(req, res) {
             res.status(200).json({
                 success: true,
                 message: 'Book created successfully',
-                data: member
+                data: books
             })
         } else {
             res.status(200).json({

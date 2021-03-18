@@ -76,40 +76,15 @@ export async function viewAllMembers(req, res) {
     }
 }
 
-//Update member record
-export async function updateMember(req, res) {
-    try {
-        let member = await Books.findAll();
-        if (member) {
-            res.status(200).json({
-                success: true,
-                message: 'member records update was successfully',
-                data: allbooks
-            })
-        } else {
-            res.json({
-                success: true,
-                message: 'Book was not found.',
-            })
-        }
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            success: false,
-            message: "Oopss! Something is wrong..."
-        })
-    }
-}
-
 //Delete a Member
 export async function deleteMember(req, res) {
     try {
-        let member = await Books.findAll();
+        let member = await Member.findAll();
         if (member) {
             res.status(200).json({
                 success: true,
                 message: 'Member records was successfully deleted',
-                data: allbooks
+                data: member
             })
         } else {
             res.json({
