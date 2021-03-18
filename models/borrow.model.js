@@ -1,13 +1,8 @@
 import Sequelize from "sequelize";
 import { sequelize } from "../db/dbConnect.js";
 
-<<<<<<< HEAD
 const Borrow = sequelize.define('borrow', {
     borrow_id: {
-=======
-const Borrow = sequelize.define('member', {
-    record_id: {
->>>>>>> 17b6d005eb31d02f83d10aefbff964753772f84e
         autoincrement: true,
         type: Sequelize.INTEGER,
         allowNull: true,
